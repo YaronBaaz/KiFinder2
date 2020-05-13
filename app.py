@@ -13,7 +13,7 @@ app = Flask(__name__, static_folder='')
 def hello():
     return render_template('newuser.html')
 
-@app.route("/index")
+@app.route("/page2")
 def newuser2():
      
      return render_template('newuser2.html')
