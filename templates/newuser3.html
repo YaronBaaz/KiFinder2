@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel = "stylesheet" type = "text/css" href = "styles.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    
+
+    <title>KiFinder Tutorial</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark  sticky-top" style="background-color: #f26d4f !important;">
+      <a class="navbar-brand" href="profile.html"><img style="width:30px; margin-bottom: 7px" src="https://cdn.iconscout.com/icon/premium/png-512-thumb/gps-signal-1-599572.png">KiFinder</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+   
+      <ul class="navbar-nav ml-auto" style="margin-bottom: 3px">
+        <li class="nav-item active">
+          <a class="nav-link" href="newuser2.html">Go back</a>
+      </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container" style="text-shadow: none !important;">
+  
+    <div class="row">
+      <div class="col-md-12"  > <h2 style="color: #1b325f; margin-bottom: 30px; margin-top: 30px;">How To Use: Home Area</h2>
+      </div>
+    </div>
+  </div>
+     
+   <div style="display: flex; height: 400px; margin-left: 10px; margin-right: 10px;">
+
+    <div onclick="showCoords(event)" id="googleMap" style="flex:1"></div>
+    <div style="flex:1; margin-left: 10px; margin-right: 10px;"> 
+     <p> Click on the middle of your house (on the map)</p>
+     
+     <p id="demo"></p>
+
+     <div class="form-group col-lg-6">
+       <label for="exampleInputText">Click on middle of the map</label>
+       <input type="text" name="totalval" class="form-control" id="totalval" placeholder="Put the number you see above " onchange="updateDue()">
+   </div>
+   <div class="form-group col-lg-6">
+       <label for="exampleInputText">Now Click the edge of your house</label>
+       <input type="text" name="inideposit" class="form-control" id="inideposit" placeholder="Put the number you see above " onchange="updateDue()">
+   </div>
+
+   <h5>This is your radius</h5>
+     <form action="{{ url_for('results_temperature MY FUNCTION NAME') }}" method="POST">
+       <input type="submit" class="form-control" placeholder="Radius" name="radius"  id="remainingval"></input>
+       
+   </form>
+      
+   </div>
+</div>
+<hr class="my-4">
+<div style="display: flex; margin-top: 20px;">
+    <div class="text-left">
+      <a href="newuser2.html" style="text-align: left !important;"><button type="button" class="btn btn-primary" >Previous Page</button></a>
+   </div>
+   <div style="flex: 10;"></div>
+   <div class="text-right">
+    <a href="profile.html" style="text-align: left !important;"><button type="button" class="btn btn-primary" >Tutorial Completed</button></a>
+ </div>
+
+ </div>
+
+
+  <script>
+  function myMap() {
+    var x = 40.598419;
+    var y = -73.944133;
+    var mapProp= {
+    
+    center:new google.maps.LatLng(x,y),
+    zoom:21,
+  };
+  var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  }
+  </script>
+  <script>
+    function updateDue() {
+   var total = parseInt(document.getElementById("totalval").value);
+   var val2 = parseInt(document.getElementById("inideposit").value);
+   // to make sure that they are numbers
+   if (!total) { total = 0; }
+   if (!val2) { val2 = 0; }
+   var ansD = document.getElementById("remainingval");
+   ansD.value = total - val2 +": is the radius. Click me to sumbit";
+}
+  </script>
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMM24zlywAIFlXiVmzELBDBC3RHrGAzb0&callback=myMap"></script>
+  
+  <script>
+   function showCoords(event) {
+     var x = event.pageX;
+     var y = event.pageY;
+     var z = 1;
+     var z2 =2 ;
+     var coords = "Your Number " + x 
+     document.getElementById("demo").innerHTML = coords;
+   }
+   </script>
+
+   
+
+   
+
+
+  </body>
+</html>
+  <!-- Optional JavaScript -->
+  
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
